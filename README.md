@@ -2,8 +2,15 @@
 
 Data and code used for the resaerch article titled "Machine Learning Models to Accelerate the Design of Polymeric Long-Acting Injectables".
 
-The model directories are named for the machine learning approcah deployed within. Each model directory contains two python scripts that can be used to train and validate the respective machine learning models using either leave-one-group-out cross-validation (LOGO_CV) or NESTED cross-validation (NESTED_CV). The "RandomForest" directory also contains the code used to refine the LOGO_CV RF model from 14-input features to 12-input features, as well as a pickle file (.pkl) conatining the saved hyperparamaters for the final version fo this 12-feature RF mdoel described in the aformentioned study.
+There are directories for (i) few-shot models and (ii) zero-shot models.
 
-The "DATA" directory conatins the raw datasets nescessary to train and validate the models using the aformentioned code. The "DATA" directory is subdivided into LOGO_CV and NESTED_CV. The LOGO_CV subdirectory contains the training and validation datasets used in this study for the LOGO_CV models. Both of these datasets are provided as xlsx, csv, and tsv file types. The NESTED_CV subdirectory contains the single dataset (essentially the aformentioned training and validation datasets combined) that was used in this study for NESTED_CV models. This dataset is provided as xlsx, csv, and tsv file types.
+The few-shot models directory conatins the datafile used to train these models (Dataset_17_feat) as various files types (xlsx, csv, and tsv).
+The zero-shot models directory conatins the datafile used to train these models (Dataset_14_feat) as various files types (xlsx, csv, and tsv).
+
+Each directory contains a python class (NESTED_CV_) that is called for the nested cross-validation of either the few-shot or zero-shot machine learning models. This class is called to train all of the machine learning models in this study (except for the neural networks). Once implemented a 10-fold nested cross-validation is conducted on the specified model. The results of this nested cross-validation are stored in a sub-directory (NESTED_CV_RESULTS) as a pickle file (.pkl). The best model hyperparamater configuration is stored in a sub-directory (Trained_models) as a pickle file (.pkl). 
+
+Each directory also contains the python scripts used for (i) preliminary model evaluation, (ii) refinement and re-training of the "best" model, and (iii) to call the trained model to make predictions.
+
+Each directory also contains all of the codes necessary to replicate the figures used in the research article (e.g., Figure_1, Figure_2, etc.). There is an additional sub-directory (Figures) that stores all of the figures generated using these python scripts.
 
 Link to preprint: https://doi.org/10.26434/chemrxiv-2021-mxrxw-v2
